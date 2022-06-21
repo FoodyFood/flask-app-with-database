@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block title %}Oneview Bookings{%
+endblock %} {% block css %}
+<!-- Bootstrap theme -->
+<link
+  href="{{ url_prefix }}{{ url_for('static', filename='css/bootstrap-theme.min.css') }}"
+  rel="stylesheet"
+/>
+
+<!-- Custom styles for this template -->
+<link
+  href="{{ url_prefix }}{{ url_for('static', filename='css/theme.css') }}"
+  rel="stylesheet"
+/>
+{% endblock %} {% block body %}
+<div class="container theme-showcase" role="main">
+  <div class="jumbotron">
+    <h2>User List</h2>
+    <a type="button" class="btn btn-link" href="{{ url_prefix }}{{ url_for('main.index') }}"
+      >Home</a
+    ><br /><br />
+    <p>Create User</p>
+  </div>
+
+  <form
+    class="form-signin"
+    method="POST"
+    action="{{ url_prefix }}{{ url_for('main.createuser_post') }}"
+  >
+    <h4><b>Booking Details</b></h4>
+    <div class="form-group">
+      <h5>Name</h5>
+      <label for="inputName" class="sr-only">Name</label>
+      <input
+        type="text"
+        id="inputName"
+        name="name"
+        class="form-control"
+        placeholder="Mary Doe"
+        required
+        autofocus
+      />
+    </div>
+    <div class="form-group">
+      <h5>Date Of Birth</h5>
+      <label for="inputDob" class="sr-only">Date Of Birth</label>
+      <input
+        type="text"
+        id="inputDob"
+        name="dob"
+        class="form-control"
+        placeholder="1st Jan 1901"
+        required
+      />
+    </div>
+
+    <p style="text-align: center"><b>{{ result }}</b></p>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+      Create User
+    </button>
+  </form>
+</div>
+<!-- /container -->
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block title %}User List{%
+endblock %} {% block css %}
+<!-- Bootstrap theme -->
+<link
+  href="{{ url_prefix }}{{ url_for('static', filename='css/bootstrap-theme.min.css') }}"
+  rel="stylesheet"
+/>
+
+<!-- Custom styles for this template -->
+<link
+  href="{{ url_prefix }}{{ url_for('static', filename='css/theme.css') }}"
+  rel="stylesheet"
+/>
+{% endblock %} {% block body %}
+<div class="container theme-showcase" role="main">
+  <div class="jumbotron">
+    <h2>User List</h2>
+    <a type="button" class="btn btn-link" href="{{ url_prefix }}{{ url_for('main.index') }}"
+      >Home</a
+    ><br /><br />
+    <p>Delete User</p>
+  </div>
+
+  <form
+    class="form-signin"
+    method="POST"
+    action="{{ url_prefix }}{{ url_for('main.deleteconfirm_post') }}"
+  >
+    <h4><b>User ID</b></h4>
+    <div class="form-group">
+      <label for="inputUserId" class="sr-only"
+        >User ID from User List</label
+      >
+      <input
+        type="text"
+        id="inputUserId"
+        name="userid"
+        class="form-control"
+        placeholder="72"
+        required
+      />
+    </div>
+    <br />
+
+    <p><b>{{ result }}</b></p>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+      Delete User
+    </button>
+  </form>
+</div>
+{% endblock %}

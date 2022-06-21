@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block title %}User List{%
+endblock %} {% block css %}
+<!-- Bootstrap theme -->
+<link
+  href="{{ url_prefix }}{{ url_for('static', filename='css/bootstrap-theme.min.css') }}"
+  rel="stylesheet"
+/>
+
+<!-- Custom styles for this template -->
+<link
+  href="{{ url_prefix }}{{ url_for('static', filename='css/theme.css') }}"
+  rel="stylesheet"
+/>
+{% endblock %} {% block body %}
+<div class="container theme-showcase" role="main">
+  <div class="jumbotron">
+    <h2>User List</h2>
+    <a type="button" class="btn btn-link" href="{{ url_prefix }}{{ url_for('main.index') }}"
+      >Home</a
+    ><br />&nbsp;&nbsp;&nbsp;
+    <a
+      type="button"
+      class="btn btn-link"
+      href="{{ url_prefix }}{{ url_for('main.createuser') }}"
+      >Create User</a
+    ><br />&nbsp;&nbsp;&nbsp;
+    <a
+      type="button"
+      class="btn btn-link"
+      href="{{ url_prefix }}{{ url_for('main.deleteuser') }}"
+      >Delete User</a
+    ><br />&nbsp;&nbsp;&nbsp;
+    <a 
+      type="button" 
+      class="btn btn-link" 
+      href="{{ url_prefix }}{{ url_for('main.listusers') }}"
+      >List All Users</a
+    ><br />
+  </div>
+</div>
+<!-- /container -->
+{% endblock %}

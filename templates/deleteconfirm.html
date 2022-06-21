@@ -1,0 +1,61 @@
+{% extends 'base.html' %} {% block title %}User List{%
+    endblock %} {% block css %}
+    <!-- Bootstrap theme -->
+    <link
+      href="{{ url_prefix }}{{ url_for('static', filename='css/bootstrap-theme.min.css') }}"
+      rel="stylesheet"
+    />
+    
+    <!-- Custom styles for this template -->
+    <link
+      href="{{ url_prefix }}{{ url_for('static', filename='css/theme.css') }}"
+      rel="stylesheet"
+    />
+    {% endblock %} {% block body %}
+    <div class="container theme-showcase" role="main">
+      <div class="jumbotron">
+        <h2>User List</h2>
+        <a type="button" class="btn btn-link" href="{{ url_prefix }}{{ url_for('main.index') }}"
+          >Home</a
+        ><br /><br />
+        <p>Delete User</p>
+      </div>
+    
+      <h4><b>Comfirm User Deletion&nbsp;&nbsp;</b></h4>
+    
+      {% for user in users %}
+      <div class="well">
+        <table>
+          <tr>
+            <td style="width: 150px"><b>User ID</b></td>
+            <td><b>{{ user.id }}</b></td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td>{{ user.name }}</td>
+          </tr>
+          <tr>
+            <td>E-Mail</td>
+            <td>{{ user.dob }}</td>
+          </tr>
+        </table>
+      </div>
+      <form
+        class="form-signin"
+        method="POST"
+        action="{{ url_prefix }}{{ url_for('main.deleteconfirmed_post') }}"
+      >
+        <input type="hidden" id="userid" name="userid" value="{{ user.id }}">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Confirm Delete
+        </button>
+      </form>
+      {% endfor %}
+
+      <br /><br />
+      <b>No other users found for that ID</b>
+
+    </div>
+    <!-- /container -->
+  {% endblock %}
+    
